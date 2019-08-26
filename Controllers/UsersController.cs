@@ -77,17 +77,12 @@ namespace Hometel.Controllers
             }
             var userResponse = _mapper.Map<UserResponse>(user);
             return Ok(userResponse);
-            // 
         }
         [Authorize]
         [HttpPost("change_user_data")]
         public async Task<IActionResult> ChangeUserData([FromBody] UserDto userDataDto){
             if(!ModelState.IsValid){
                 return BadRequest(ModelState);
-            }
-
-            if(await _userService.Authenticate(userDataDto.Username, userDataDto.Password) == null){
-                return BadRequest("Username or password is incorrect");
             }
 
             var user = _mapper.Map<User>(userDataDto);
