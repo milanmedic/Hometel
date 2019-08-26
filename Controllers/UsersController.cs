@@ -85,10 +85,10 @@ namespace Hometel.Controllers
             if(!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
-            /*var user = await _userService.Authenticate(userDataDto.Username, userDataDto.Password);
-            if(user == null){
+
+            if(await _userService.Authenticate(userDataDto.Username, userDataDto.Password) == null){
                 return BadRequest("Username or password is incorrect");
-            }*/
+            }
 
             var user = _mapper.Map<User>(userDataDto);
 
