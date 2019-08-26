@@ -84,7 +84,9 @@ namespace Hometel.Controllers
             if(!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
-
+            if(await _userService.Authenticate(userDataDto.Username, userDataDto.Password) == null){
+                return BadRequest("Username or password is incorrect");
+            }
             var user = _mapper.Map<User>(userDataDto);
 
             var updatedUser = await _userService.UpdateUserDataAsync(user, userDataDto.Password);
