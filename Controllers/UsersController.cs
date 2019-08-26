@@ -9,7 +9,7 @@ using Hometel.Domain.Services;
 using Hometel.Domain.Models.Dto;
 using AutoMapper;
 
-namespace JwtApi.Controllers
+namespace Hometel.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,12 +25,12 @@ namespace JwtApi.Controllers
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserDto userDto){
-            userDto.Role = "User"; //MySQL doesn't allow string fields to have default values
+            userDto.Role = "Guest"; //MySQL doesn't allow string fields to have default values
 
             if(!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
-            var user = _mapper.Map<User>(userDto);
+            var user = _mapper.Map<Guest>(userDto);
 
             try {
 
@@ -47,15 +47,15 @@ namespace JwtApi.Controllers
         }
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] UserDto userDto){
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto){
 
-            if (string.IsNullOrEmpty(userDto.Username) || string.IsNullOrEmpty(userDto.Password)){
+            if (string.IsNullOrEmpty(loginDto.Username) || string.IsNullOrEmpty(loginDto.Password)){
                   return BadRequest("Username or password is empty");
              }   
             if(!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
-            var user = await _userService.Authenticate(userDto.Username, userDto.Password);
+            var user = await _userService.Authenticate(loginDto.Username, loginDto.Password);
             if(user == null){
                 return BadRequest("Username or password is incorrect");
             }
@@ -63,6 +63,41 @@ namespace JwtApi.Controllers
             var response = _mapper.Map<UserResponse>(user);
 
             return Ok(response);
+        }
+        [Authorize]
+        [HttpGet("view_profile/{username}")]
+        public async Task<IActionResult> ViewMyData([FromRoute] string username){
+            // Find user profile
+            if(string.IsNullOrEmpty(username)){
+                return BadRequest("The provided username doesn't exist");
+            }
+            var user = await _userService.GetUserAsync(username);
+            if(user == null){
+                return BadRequest("There has been a problem while returning your data");
+            }
+            var userResponse = _mapper.Map<UserResponse>(user);
+            return Ok(userResponse);
+            // 
+        }
+        [Authorize]
+        [HttpPost("change_user_data")]
+        public async Task<IActionResult> ChangeUserData([FromBody] UserDto userDataDto){
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState);
+            }
+            /*var user = await _userService.Authenticate(userDataDto.Username, userDataDto.Password);
+            if(user == null){
+                return BadRequest("Username or password is incorrect");
+            }*/
+
+            var user = _mapper.Map<User>(userDataDto);
+
+            var updatedUser = await _userService.UpdateUserDataAsync(user, userDataDto.Password);
+            if(updatedUser == null){
+                return BadRequest("Something went wrong while updating your data");
+            }
+            var userResponse = _mapper.Map<UserResponse>(updatedUser);
+            return Ok(userResponse);
         }
     }
 }

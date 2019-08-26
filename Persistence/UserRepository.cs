@@ -19,5 +19,30 @@ namespace Hometel.Persistence {
             var existingUser = await _context.Users.FirstOrDefaultAsync(suser => suser.Username == username);
             return existingUser;
         }
+
+        public async Task<IList<User>> ListAllUsersAsync(){
+            return await _context.Users.ToListAsync();
+        }
+        public async Task <User> UpdateUserAsync(User user){
+            var entity = await _context.Users.FirstOrDefaultAsync(item => item.Username == user.Username);
+
+            // Validate entity is not null
+            if (entity != null)
+            {
+                // Make changes on entity
+                entity.Name = user.Name;
+                entity.Surname = user.Surname;
+                entity.Gender = user.Gender;
+                entity.PasswordHash = user.PasswordHash;
+                entity.PasswordSalt = user.PasswordSalt;
+
+                // Update entity in DbSet
+                _context.Users.Update(entity);
+
+                // Save changes in database
+                _context.SaveChanges();
+            }
+            return entity;
+            }
     }
 }

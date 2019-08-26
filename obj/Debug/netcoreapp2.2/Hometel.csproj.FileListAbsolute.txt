@@ -12,3 +12,17 @@
 /home/mmedic/Programming_Projects/Hometel/obj/Debug/netcoreapp2.2/Hometel.RazorTargetAssemblyInfo.cache
 /home/mmedic/Programming_Projects/Hometel/obj/Debug/netcoreapp2.2/Hometel.dll
 /home/mmedic/Programming_Projects/Hometel/obj/Debug/netcoreapp2.2/Hometel.pdb
+/home/mmedic/Programming_Projects/Hometel/Hometel/bin/Debug/netcoreapp2.2/Hometel.deps.json
+/home/mmedic/Programming_Projects/Hometel/Hometel/bin/Debug/netcoreapp2.2/Hometel.runtimeconfig.json
+/home/mmedic/Programming_Projects/Hometel/Hometel/bin/Debug/netcoreapp2.2/Hometel.runtimeconfig.dev.json
+/home/mmedic/Programming_Projects/Hometel/Hometel/bin/Debug/netcoreapp2.2/Hometel.dll
+/home/mmedic/Programming_Projects/Hometel/Hometel/bin/Debug/netcoreapp2.2/Hometel.pdb
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.csprojAssemblyReference.cache
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.csproj.CoreCompileInputs.cache
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.RazorAssemblyInfo.cache
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.RazorAssemblyInfo.cs
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.AssemblyInfoInputs.cache
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.AssemblyInfo.cs
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.RazorTargetAssemblyInfo.cache
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.dll
+/home/mmedic/Programming_Projects/Hometel/Hometel/obj/Debug/netcoreapp2.2/Hometel.pdb

@@ -25,6 +25,7 @@ namespace Hometel.Persistence {
             builder.Entity<User>().Property(u => u.Name).IsRequired().HasMaxLength(50);
             builder.Entity<User>().Property(u => u.Surname).IsRequired().HasMaxLength(50);
             builder.Entity<User>().Property(u => u.Role).IsRequired();
+            builder.Entity<User>().Property(u => u.Token);
             builder.Entity<User>().Property(u => u.Gender).IsRequired();
 
             //Host

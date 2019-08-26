@@ -11,6 +11,10 @@ namespace Hometel.Mapper
             CreateMap<User, UserDto>();
             CreateMap<UserDto, User>();
             CreateMap<User, UserResponse>();
+            CreateMap<Guest, UserDto>();
+            CreateMap<UserDto, Guest>();
+            CreateMap<Host, UserDto>();
+            CreateMap<UserDto, Host>();
         }
     }
 }

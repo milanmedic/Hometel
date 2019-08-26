@@ -9,6 +9,7 @@ using System.Security.Claims;
 using Hometel.Domain.Repositories;
 using System.Text;
 using Microsoft.Extensions.Options;
+using Hometel.Domain.Models.Dto;
 
 namespace Hometel.Services {
     public class UserService : IUserService {
@@ -69,8 +70,24 @@ namespace Hometel.Services {
             return user;
         }
 
+        public async Task<User> UpdateUserDataAsync(User user, string password){
+            var existingUser = await _userRepository.FindUser(user.Username);
+            if(existingUser == null){
+                throw new AppException("We haven't been able to locate your user data");
+            }
+            byte[] passwordHash, passwordSalt;
+            _securityService.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+            return await _userRepository.UpdateUserAsync(user);
+        }
+
         public async Task<User> GetUserAsync(string username){
             return await _userRepository.FindUser(username);
+        }
+
+        public async Task<IList<User>> GetAllUsersAsync(){
+            return await _userRepository.ListAllUsersAsync();
         }
     }
 }

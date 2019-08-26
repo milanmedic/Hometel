@@ -12809,11 +12809,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/mmedic/Programming_Projects/Hometel/Hometel.csproj",
+      "projectUniqueName": "/home/mmedic/Programming_Projects/Hometel/Hometel/Hometel.csproj",
       "projectName": "Hometel",
-      "projectPath": "/home/mmedic/Programming_Projects/Hometel/Hometel.csproj",
+      "projectPath": "/home/mmedic/Programming_Projects/Hometel/Hometel/Hometel.csproj",
       "packagesPath": "/home/mmedic/.nuget/packages/",
-      "outputPath": "/home/mmedic/Programming_Projects/Hometel/obj/",
+      "outputPath": "/home/mmedic/Programming_Projects/Hometel/Hometel/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
